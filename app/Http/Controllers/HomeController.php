@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->middleware('can:home')->only('index');
         $this->middleware('can:admin')->only('admin');
         $this->middleware('can:manager')->only('manager');
