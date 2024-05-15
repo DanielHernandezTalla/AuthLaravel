@@ -8,7 +8,7 @@
 
     <div class="section">
         <div class="d-flex align-items-center justify-content-between mb-3">
-            <x-tablas.number-pagination />
+            <x-tablas.number-pagination isReport />
 
             <form class="d-flex align-items-center justify-content-end p-0 gap-2"
                 action="{{ route('poswebnew.ventasaempleados') }}">

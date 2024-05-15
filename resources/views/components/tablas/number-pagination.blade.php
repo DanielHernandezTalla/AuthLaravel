@@ -3,10 +3,10 @@
         Mostrar
         <select name="paginate" class="form-select form-select-sm" id="number-pagination">
             <option value="5">5</option>
-            <option value="10">10</option>
+            <option value="10" <?= isset($isReport) ? '' : 'selected' ?>>10</option>
             <option value="20">20</option>
             <option value="100">100</option>
-            <option value="-1" selected>Todos</option>
+            <option value="-1" <?= isset($isReport) ? 'selected' : '' ?>>Todos</option>
         </select>
         <span class="text-nowrap">registros por página</span>
     </label>

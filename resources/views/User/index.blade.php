@@ -8,7 +8,9 @@
     ])
 
     <div class="section">
-        <h4>Listado de usuarios</h4>
+        <div class="d-flex mb-2">
+            <x-tablas.number-pagination />
+        </div>
         <table>
             <thead>
                 <tr>
@@ -39,7 +41,7 @@
     </div>
 
     @if ($users->withQueryString()->lastPage() != 1)
-        <div class="section">
+        <div class="section-min">
             {!! $users->withQueryString()->links('pagination::bootstrap-5') !!}
         </div>
     @endif

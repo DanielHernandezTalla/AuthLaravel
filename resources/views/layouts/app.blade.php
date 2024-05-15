@@ -32,6 +32,8 @@
 <body>
     <div id="app" class="bg-slate-100 d-flex justify-content-start" style="height: 100vh">
 
+        <x-dashboard.alerts />
+
         <nav class="nav d-flex flex-column justify-content-between"
             style="min-width:70px; background-color: var(--teal-900)">
             <div class="d-flex flex-column justify-content-between h-100  pt-5 pb-5">
