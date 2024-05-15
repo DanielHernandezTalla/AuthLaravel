@@ -4,17 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use Throwable;
 
 class PermisosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $permissions = Permission::paginate(10);
+        // $permissions = Permission::paginate(10);
+        $permissions = Permission::get();
 
-        return view('Permisos.index', compact('permissions'));
+        return view('permisos.index', compact('permissions'));
     }
 
     /**
@@ -22,7 +28,7 @@ class PermisosController extends Controller
      */
     public function create()
     {
-        //
+        return view('permisos.create');
     }
 
     /**
@@ -30,7 +36,17 @@ class PermisosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'name' => 'min:3'
+        ]);
+
+        try {
+            Permission::create(['name' => $request->name, 'guard_name' => 'web']);
+            return redirect()->route('datos.permisos.index');
+        } catch (Throwable $e) {
+            return back()->withErrors(['El permiso no pudo ser incertado correctamente, intente de nuevo.', $e->getMessage()]);
+        }
     }
 
     /**
@@ -38,7 +54,8 @@ class PermisosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $permission = Permission::with('roles')->where('id', $id)->first();
+        return view('permisos.[id]', compact('permission'));
     }
 
     /**

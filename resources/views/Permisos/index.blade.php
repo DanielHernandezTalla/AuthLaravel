@@ -8,8 +8,8 @@
     ])
 
     <div class="section">
-        <h4>Listado de usuarios</h4>
-        <table>
+        <h4>Listado de permisos</h4>
+        <table id="tabla">
             <thead>
                 <tr>
                     <th>Id permiso</th>
@@ -33,12 +33,4 @@
             </tbody>
         </table>
     </div>
-
-    @if ($permissions->withQueryString()->lastPage() != 1)
-        <div class="section">
-            {!! $permissions->withQueryString()->links('pagination::bootstrap-5') !!}
-        </div>
-    @endif
-
-
 @endsection

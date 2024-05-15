@@ -9,6 +9,10 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -17,7 +21,7 @@ class UserController extends Controller
         $users = User::with('roles')
             ->paginate(10);
 
-        return view('User.index', compact('users'));
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -25,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('User.create');
+        return view('user.create');
     }
 
     /**
@@ -46,7 +50,7 @@ class UserController extends Controller
             ->where('id', $id)
             ->first();
 
-        return view('User.[id]', compact('user', 'roles'));
+        return view('user.[id]', compact('user', 'roles'));
     }
 
     /**

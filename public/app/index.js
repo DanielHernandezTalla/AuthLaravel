@@ -67,7 +67,10 @@ function navbarSelect(e) {
 function cancelAndHabilityForm(e) {
     if (e.target.matches(".btn-form-cancel")) {
         e.preventDefault();
-        history.back();
+        let urls = window.location.pathname.split("/");
+        urls.pop();
+        window.location.replace("http://www.w3schools.com");
+        window.location.href = urls.join("/");
     }
     if (e.target.matches("#btn-habilitar-edicion")) {
         let inputs = document.querySelectorAll("[data-undisabled]");

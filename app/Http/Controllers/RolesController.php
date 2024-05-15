@@ -3,18 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RolesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:admin');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $roles = Role::paginate(10);
+        // $roles = Role::paginate(10);
+        $roles = Role::get();
 
-        return view('Roles.index', compact('roles'));
+        return view('roles.index', compact('roles'));
     }
 
     /**
@@ -38,7 +45,11 @@ class RolesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $role = Role::with('permissions')->where('id', $id)->first();
+        $permisos = Permission::whereNotIn('id', $role->permissions->pluck('id'))
+            ->get();
+
+        return view('roles.[id]', compact('role', 'permisos'));
     }
 
     /**
@@ -54,7 +65,12 @@ class RolesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $rol = Role::where('id', $id)->first();
+        $permiso = Permission::where('id', $request->permiso)->first();
+
+        $permiso->syncRoles([$rol]);
+
+        return back();
     }
 
     /**

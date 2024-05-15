@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
     <div class="unautorize-content d-flex justify-content-center align-items-center">
@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="">
-            <img class="img-403" src="/images/403.png" alt="403">
+            <img class="img-403" src="/images/403.svg" alt="403">
         </div>
     </div>
 @endsection

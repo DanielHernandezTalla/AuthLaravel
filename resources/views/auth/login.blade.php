@@ -1,11 +1,15 @@
-@extends('layouts.appAuth')
+@extends('layouts.auth')
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+            <div class="col-md-8 mb-4">
+                <div class="section d-lg-flex flex-row shadow-lg">
+                    <div class="card-body">
+                        <img class="mb-2" width="32" height="40" src="/images/logo.png" alt="logo">
+                        <h1>{{ __('Login') }}</h1>
+                        <div class="fw-bold text-secondary">Usa tu cuenta de Google</div>
+                    </div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
@@ -58,17 +62,19 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+
+                            <div class="row mb-3">
+                                @if (Route::has('password.request'))
+                                    <a class="btn-link col-md-4 col-form-label text-md-end"
+                                        href="{{ route('password.request') }}">
+                                        {{ __('Olvidaste tu contraseña?') }}
+                                    </a>
+                                @endif
+
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary py-2 px-3">
                                         {{ __('Login') }}
                                     </button>
-
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
                                 </div>
                             </div>
                         </form>

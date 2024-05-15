@@ -7,7 +7,7 @@
 
     <div class="section">
         <h4>Listado de usuarios</h4>
-        <table>
+        <table id="tabla">
             <thead>
                 <tr>
                     <th>Id Rol</th>
@@ -32,11 +32,11 @@
         </table>
     </div>
 
-    @if ($roles->withQueryString()->lastPage() != 1)
+    {{-- @if ($roles->withQueryString()->lastPage() != 1)
         <div class="section">
             {!! $roles->withQueryString()->links('pagination::bootstrap-5') !!}
         </div>
-    @endif
+    @endif --}}
 
 
 @endsection
