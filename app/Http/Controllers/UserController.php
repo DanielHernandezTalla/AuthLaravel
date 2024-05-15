@@ -45,7 +45,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => $request->password, // password
             'remember_token' => Str::random(10),
         ])->assignRole($request->idRol);
         return redirect()->route('datos.user.index')->with('success', 'Usuario creado con exito!');
@@ -81,6 +81,12 @@ class UserController extends Controller
         // return ;
         $role = Role::where('id', $request->idRol)->first();
         $user = User::with(['roles'])->findOrFail($id);
+
+        User::where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
 
         $user->syncRoles([$role->name]);
         return redirect()->route('datos.user.index')->with('success', 'Operacion realizada con exito!');
