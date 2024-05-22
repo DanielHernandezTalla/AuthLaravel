@@ -34,17 +34,9 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="datos-item">
-                    <a href="/datos/user">
-                        <i class="bi bi-list-check"></i>
-                        <h6>Roles y permisos</h6>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="datos-item">
-                    <a href="/datos/user">
-                        <i class="bi bi-person-lines-fill"></i>
-                        <h6>Usuarios y roles</h6>
+                    <a href="{{ route('datos.typepermissions.index') }}">
+                        <i class="bi bi-list-ul"></i>
+                        <h6>Categoría Permisos</h6>
                     </a>
                 </div>
             </div>

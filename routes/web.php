@@ -27,11 +27,13 @@ Route::get('/manager', [App\Http\Controllers\HomeController::class, 'manager'])-
 Route::get('/developer', [App\Http\Controllers\HomeController::class, 'developer'])->name('developer');
 
 
-Route::prefix('usuarios')->name('datos.')->group(function () {
+Route::prefix('auth')->name('datos.')->group(function () {
     Route::resource('/', App\Http\Controllers\DatosController::class);
     Route::resource('user', App\Http\Controllers\UserController::class);
     Route::resource('roles', App\Http\Controllers\RolesController::class);
     Route::resource('permisos', App\Http\Controllers\PermisosController::class);
+    Route::resource('typepermissions', App\Http\Controllers\TypePermisosController::class);
+    Route::delete('roles/permisos/{id}', [App\Http\Controllers\RolesController::class, 'destroyPermissions'])->name('destroyPermissions');
 });
 
 Route::prefix('/home')->name('poswebnew.')->group(function () {

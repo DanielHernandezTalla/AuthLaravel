@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Str;
 
@@ -13,6 +14,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:usuarios');
     }
     /**
      * Display a listing of the resource.
@@ -20,10 +22,12 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $paginate = $request->paginate ? $request->paginate : 10;
+        $name = $request->name;
         $users = User::with('roles')
+            ->where('name', 'like', '%' . $name . '%')
             ->paginate($paginate);
 
-        return view('user.index', compact('users'));
+        return view('user.index', compact('name', 'users'));
     }
 
     /**
@@ -85,7 +89,7 @@ class UserController extends Controller
         User::where('id', $id)->update([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            // 'password' => Hash::make($request->password),
         ]);
 
         $user->syncRoles([$role->name]);
@@ -97,6 +101,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $usuario = User::with('permissions', 'roles')->where('id', $id)->first();
+
+        $usuario->delete();
+        return back()->with('success', 'El usuario se elimino correctamente.');
     }
 }

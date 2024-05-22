@@ -8,8 +8,19 @@
     ])
 
     <div class="section">
-        <div class="d-flex mb-2">
+        <div class="d-flex align-items-center justify-content-between mb-3">
             <x-tablas.number-pagination />
+            <form class="d-flex align-items-center justify-content-end p-0 gap-2" action="{{ route('datos.user.index') }}">
+                <div class="col-auto">
+                    <input class="form-control" type="text" name="name" id="name" placeholder="Buscar..."
+                        value="{{ $name }}">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-outline-dark">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
         </div>
         <table>
             <thead>
@@ -20,18 +31,22 @@
                     <th>Correo</th>
                     <th>Creado</th>
                     <th>Actualizado</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
+                <x-tablas.empty :data="$users" colspan='7' />
                 @foreach ($users as $user)
                     <tr>
                         <td><a href={{ route('datos.user.show', $user->id) }}>{{ $user->id }}</a></td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->roles[0]->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ ucfirst(\Carbon\Carbon::parse($user->created_at)->locale('es')->isoFormat('dddd D \d\e MMMM \d\e\l Y')) }}
+                        <td><x-tablas.fecha fecha="{{ $user->created_at }}" /> </td>
+                        <td><x-tablas.fecha fecha="{{ $user->updated_at }}" /> </td>
                         </td>
-                        <td>{{ ucfirst(\Carbon\Carbon::parse($user->updated_at)->locale('es')->isoFormat('dddd D \d\e MMMM \d\e\l Y')) }}
+                        <td>
+                            <x-tablas.delete-row id="{{ $user->id }}" route='datos.user.destroy' />
                         </td>
                     </tr>
                 @endforeach

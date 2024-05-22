@@ -17,10 +17,6 @@
     {{-- Icons --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
-    {{-- Datatables --}}
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
-
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
@@ -42,7 +38,7 @@
                     <li>
                         <a href="/home" title="Dashboard" data-nav><i class="bi bi-speedometer"></i></a>
                     </li>
-                    @if (Auth::user()->roles()->first()->name === 'admin')
+                    @if (Auth::user()->roles()->first()->name === 'admin developer')
                         {{-- <li>
                             <a href="/user" title="Usuarios" data-nav><i class="bi bi-database-fill"></i></a>
                         </li> --}}
@@ -50,7 +46,7 @@
                             <a href="#" title="Graficas" data-nav><i class="bi bi-bar-chart-fill"></i></a>
                         </li>
                         <li>
-                            <a href="/usuarios" title="Usuarios" data-nav><i class="bi bi-person-fill"></i></a>
+                            <a href="/auth" title="Auth" data-nav><i class="bi bi-person-fill"></i></a>
                         </li>
                         <li>
                             <a href="#" title="Información" data-nav><i
@@ -85,7 +81,7 @@
                     <li>
                         <a href="/home" title="Dashboard" data-nav-abs>Dashboard</a>
                     </li>
-                    @if (Auth::user()->roles()->first()->name === 'admin')
+                    @if (Auth::user()->roles()->first()->name === 'admin developer')
                         {{-- <li>
                             <a href="/user" title="Usuarios" data-nav-abs>Usuarios</a>
                         </li> --}}
@@ -93,7 +89,7 @@
                             <a href="#" title="Graficas" data-nav-abs>Graficas</a>
                         </li>
                         <li>
-                            <a href="/usuarios" title="Usuarios" data-nav-abs>Usuarios</a>
+                            <a href="/auth" title="Usuarios" data-nav-abs>Auth</a>
                         </li>
                         <li>
                             <a href="#" title="Información" data-nav-abs>Información</a>
@@ -135,38 +131,7 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script src="/app/index.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', e => {
-            new DataTable('#tabla', {
-                responsive: true,
-                autoWidth: false,
-                'language': {
-                    'lengthMenu': "Mostrar _MENU_ registros por página",
-                    "zeroRecords": "No se encontraron resultados",
-                    "loadingRecords": "Cargando...",
-                    'info': "Mostrando la página _PAGE_ de _PAGES_",
-                    'infoEmpty': "Mostrando la página _PAGE_ de _PAGES_",
-                    'infoFiltered': "(filtrado de _MAX_ registros totales)",
-                    'search': 'Buscar:',
-                    'paginate': {
-                        'next': 'Siguiente',
-                        'previous': 'Anterior'
-                    }
-                },
-                lengthMenu: [
-                    [10, 25, 50, 100, -1],
-                    [10, 25, 50, 100, 'Todos']
-                ],
-            });
-        })
-    </script>
 </body>
 
 </html>
