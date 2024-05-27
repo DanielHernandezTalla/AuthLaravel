@@ -24,6 +24,19 @@
                             value="{{ old('name') ?? $permission->name }}" disabled data-undisabled>
                     </div>
                 </div>
+                <div class="col mb-3">
+                    <label for="type" class="form-label">Categoría</label>
+                    <select class="form-select" name="type_permissions_id" disabled data-undisabled>
+                        <option value="">Elige una categoría</option>
+                        @foreach ($type_permissions as $item)
+                            @if ($item->id == $permission->type_permissions_id)
+                                <option value="{{ $item->id }}" selected> {{ $item->name }}</option>
+                            @else
+                                <option value="{{ $item->id }}"> {{ $item->name }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
                 <div class="row g-3 mb-3">
                     <div class="col">
                         <label for="created" class="form-label">Creado en</label>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Modificar Rol')
+@section('title', 'Modificar rol')
 @section('content')
 
     @include('components.header')

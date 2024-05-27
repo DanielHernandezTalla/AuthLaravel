@@ -50,7 +50,8 @@ class PermisosController extends Controller
      */
     public function create()
     {
-        return view('permisos.create');
+        $type_permissions = type_permissions::get();
+        return view('permisos.create', compact('type_permissions'));
     }
 
     /**
@@ -64,7 +65,12 @@ class PermisosController extends Controller
         ]);
 
         try {
-            Permission::create(['name' => $request->name, 'guard_name' => 'web']);
+            $permission = new Permission();
+            $permission->name = $request->name;
+            $permission->type_permissions_id = $request->type;
+            $permission->guard_name = 'web';
+            $permission->save();
+
             return redirect()->route('datos.permisos.index');
         } catch (Throwable $e) {
             return back()->withErrors(['El permiso no pudo ser incertado correctamente, intente de nuevo.', $e->getMessage()]);
@@ -78,13 +84,14 @@ class PermisosController extends Controller
     {
         $paginate = $request->paginate ? $request->paginate : 10;
         $permission = Permission::with('roles')->where('id', $id)->first();
+        $type_permissions = type_permissions::get();
         $roles = Role::whereNotIn('id', $permission->roles->pluck('id'))
             ->get();
 
         $rolespermisos = Role::whereIn('id', $permission->roles->pluck('id'))
             ->paginate($paginate);
 
-        return view('permisos.[id]', compact('permission', 'roles', 'rolespermisos'));
+        return view('permisos.[id]', compact('permission', 'roles', 'rolespermisos', 'type_permissions'));
     }
 
     /**
@@ -101,7 +108,7 @@ class PermisosController extends Controller
     public function update(Request $request, string $id)
     {
         if ($request->updateName == 1) {
-            Permission::where('id', $id)->update(['name' => $request->name]);
+            Permission::where('id', $id)->update(['name' => $request->name, 'type_permissions_id' => $request->type_permissions_id]);
         } else {
             $permission = Permission::where('id', $id)->first();
             $rol = Role::where('id', $request->rol)->first();

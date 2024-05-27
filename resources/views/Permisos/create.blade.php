@@ -10,7 +10,7 @@
             <div class="row g-3 mb-3">
                 <div class="col-3">
                     <label for="id" class="form-label">Id permiso</label>
-                    <input type="text" class="form-control" id="id"  value="" disabled data-disabled>
+                    <input type="text" class="form-control" id="id" value="" disabled data-disabled>
                 </div>
                 <div class="col">
                     <label for="name" class="form-label">Nombre permiso</label>
@@ -20,6 +20,15 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
+            </div>
+            <div class="col mb-3">
+                <label for="type" class="form-label">Categoría</label>
+                <select class="form-select" name="type">
+                    <option value="">Elige una categoría</option>
+                    @foreach ($type_permissions as $item)
+                        <option value="{{ $item->id }}"> {{ $item->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="row g-3">
                 <div class="col">

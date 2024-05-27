@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Modificar Categoría Permisos')
+@section('title', 'Modificar categoría')
 @section('content')
 
     @include('components.header')

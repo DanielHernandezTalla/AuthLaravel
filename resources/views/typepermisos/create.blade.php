@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Nuevo Permiso')
+@section('title', 'Nueva categoría')
 @section('content')
 
     @include('components.header')

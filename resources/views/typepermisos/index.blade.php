@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Catálogo permisos')
+@section('title', 'Catálogo de categorias')
 
 @section('content')
 
     @include('components.header', [
-        'button' => ['name' => 'Agregar permiso', 'url' => 'datos.typepermissions.create'],
+        'button' => ['name' => 'Agregar categoría', 'url' => 'datos.typepermissions.create'],
     ])
 
     <div class="section">
