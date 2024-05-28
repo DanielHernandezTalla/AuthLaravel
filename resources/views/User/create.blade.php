@@ -5,7 +5,7 @@
     @include('components.header')
 
     <div class="section-content">
-        <form action="{{ route('datos.user.store') }}" method="POST" class="p-0">
+        <form action="{{ route('datos.users.store') }}" method="POST" class="p-0">
             @csrf
             <div class="row g-3 mb-3">
                 <div class="col-3">

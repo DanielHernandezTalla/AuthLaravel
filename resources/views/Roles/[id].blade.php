@@ -111,7 +111,8 @@
                         <x-tablas.empty :data="$rolespermisos" colspan='6' />
                         @foreach ($rolespermisos as $permission)
                             <tr>
-                                <td><a href={{ route('datos.permisos.show', $permission->id) }}>{{ $permission->id }}</a>
+                                <td><a
+                                        href={{ route('datos.permissions.show', $permission->id) }}>{{ $permission->id }}</a>
                                 </td>
                                 <td>{{ $permission->name }}</td>
                                 <td>{{ $permission->type }}</td>

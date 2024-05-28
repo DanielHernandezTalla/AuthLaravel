@@ -10,7 +10,7 @@
         <div class="row g-3">
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="datos-item">
-                    <a href="{{ route('datos.user.index') }}">
+                    <a href="{{ route('datos.users.index') }}">
                         <i class="bi bi-people-fill"></i>
                         <h6>Usuarios</h6>
                     </a>
@@ -26,7 +26,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="datos-item">
-                    <a href="{{ route('datos.permisos.index') }}">
+                    <a href="{{ route('datos.permissions.index') }}">
                         <i class="bi bi-person-fill-slash"></i>
                         <h6>Permisos</h6>
                     </a>

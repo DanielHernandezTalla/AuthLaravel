@@ -29,9 +29,9 @@ Route::get('/developer', [App\Http\Controllers\HomeController::class, 'developer
 
 Route::prefix('auth')->name('datos.')->group(function () {
     Route::resource('/', App\Http\Controllers\DatosController::class);
-    Route::resource('user', App\Http\Controllers\UserController::class);
+    Route::resource('users', App\Http\Controllers\UserController::class);
     Route::resource('roles', App\Http\Controllers\RolesController::class);
-    Route::resource('permisos', App\Http\Controllers\PermisosController::class);
+    Route::resource('permissions', App\Http\Controllers\PermisosController::class);
     Route::resource('typepermissions', App\Http\Controllers\TypePermisosController::class);
     Route::delete('roles/permisos/{id}', [App\Http\Controllers\RolesController::class, 'destroyPermissions'])->name('destroyPermissions');
 });

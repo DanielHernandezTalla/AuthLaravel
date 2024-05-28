@@ -3,7 +3,7 @@
 @section('content')
 
     @include('components.header', [
-        'button' => ['name' => 'Exportar', 'url' => 'datos.user.create'],
+        'button' => ['name' => 'Exportar', 'url' => 'datos.users.create'],
     ])
 
     <div class="section">

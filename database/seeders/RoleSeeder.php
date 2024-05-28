@@ -29,9 +29,9 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'developer'])->syncRoles([$admin, $manager, $developer]);
 
         Permission::create(['name' => 'auth', 'type_permissions_id' => $type->id])->syncRoles([$admin]);
-        Permission::create(['name' => 'usuarios', 'type_permissions_id' => $type->id])->syncRoles([$admin]);
+        Permission::create(['name' => 'users', 'type_permissions_id' => $type->id])->syncRoles([$admin]);
         Permission::create(['name' => 'roles', 'type_permissions_id' => $type->id])->syncRoles([$admin]);
-        Permission::create(['name' => 'permisos', 'type_permissions_id' => $type->id])->syncRoles([$admin]);
-        Permission::create(['name' => 'typepermisos', 'type_permissions_id' => $type->id])->syncRoles([$admin]);
+        Permission::create(['name' => 'permissions', 'type_permissions_id' => $type->id])->syncRoles([$admin]);
+        Permission::create(['name' => 'typepermissions', 'type_permissions_id' => $type->id])->syncRoles([$admin]);
     }
 }

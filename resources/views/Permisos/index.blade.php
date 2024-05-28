@@ -4,7 +4,7 @@
 @section('content')
 
     @include('components.header', [
-        'button' => ['name' => 'Agregar permiso', 'url' => 'datos.permisos.create'],
+        'button' => ['name' => 'Agregar permiso', 'url' => 'datos.permissions.create'],
     ])
 
     <div class="section">
@@ -12,7 +12,7 @@
             <x-tablas.number-pagination />
 
             <form class="d-flex align-items-center justify-content-end p-0 gap-2"
-                action="{{ route('datos.permisos.index') }}">
+                action="{{ route('datos.permissions.index') }}">
                 <select class="form-select" name="type">
                     <option value="">Elige una categoría</option>
                     @foreach ($type_permissions as $item)
@@ -49,7 +49,7 @@
                 <x-tablas.empty :data="$permissions" colspan='5' />
                 @foreach ($permissions as $permission)
                     <tr>
-                        <td><a href={{ route('datos.permisos.show', $permission->id) }}>{{ $permission->id }}</a></td>
+                        <td><a href={{ route('datos.permissions.show', $permission->id) }}>{{ $permission->id }}</a></td>
                         <td>{{ $permission->name }}</td>
                         <td>{{ $permission->type }}</td>
                         <td>{{ ucfirst(\Carbon\Carbon::parse($permission->created_at)->locale('es')->isoFormat('dddd D \d\e MMMM \d\e\l Y')) }}
@@ -57,7 +57,7 @@
                         <td>{{ ucfirst(\Carbon\Carbon::parse($permission->updated_at)->locale('es')->isoFormat('dddd D \d\e MMMM \d\e\l Y')) }}
                         </td>
                         <td>
-                            <x-tablas.delete-row id="{{ $permission->id }}" route='datos.permisos.destroy' />
+                            <x-tablas.delete-row id="{{ $permission->id }}" route='datos.permissions.destroy' />
                         </td>
                     </tr>
                 @endforeach

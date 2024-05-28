@@ -6,7 +6,7 @@
 
     <div class="section-content">
         <button id="btn-habilitar-edicion" class="btn btn-success">Habilitar edición</button>
-        <form method="POST" action="{{ route('datos.user.update', $user->id) }}">
+        <form method="POST" action="{{ route('datos.users.update', $user->id) }}">
             @csrf
             @method('PUT')
 

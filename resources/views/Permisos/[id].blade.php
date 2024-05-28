@@ -7,7 +7,7 @@
     <div class="overflow-scroll d-flex flex-column flex-lg-row gap-4">
         <div class="section-content">
             <button id="btn-habilitar-edicion" class="btn btn-success">Habilitar edición</button>
-            <form method="POST" action="{{ route('datos.permisos.update', $permission->id) }}">
+            <form method="POST" action="{{ route('datos.permissions.update', $permission->id) }}">
                 @csrf
                 @method('PUT')
 
@@ -67,7 +67,7 @@
         <div class="w-100 d-flex flex-column gap-4">
             <div class="section">
                 <div class="d-flex flex-column align-items-end gap-3">
-                    <form method="POST" action="{{ route('datos.permisos.update', $permission->id) }}"
+                    <form method="POST" action="{{ route('datos.permissions.update', $permission->id) }}"
                         class="p-0 w-100 d-flex mb-3">
                         @csrf
                         @method('PUT')

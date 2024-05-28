@@ -2,9 +2,7 @@
 @section('title', 'Ventas a empleados')
 @section('content')
 
-    @include('components.header', [
-        // 'button' => ['name' => 'Exportar', 'url' => 'datos.user.create'],
-    ])
+    @include('components.header')
 
     <div class="section">
         <div class="d-flex align-items-center justify-content-between mb-3">

@@ -13,7 +13,7 @@ class PermisosController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('can:permisos');
+        $this->middleware('can:permissions');
     }
     /**
      * Display a listing of the resource.
@@ -71,7 +71,7 @@ class PermisosController extends Controller
             $permission->guard_name = 'web';
             $permission->save();
 
-            return redirect()->route('datos.permisos.index');
+            return redirect()->route('datos.permissions.index');
         } catch (Throwable $e) {
             return back()->withErrors(['El permiso no pudo ser incertado correctamente, intente de nuevo.', $e->getMessage()]);
         }

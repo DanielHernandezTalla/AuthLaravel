@@ -14,7 +14,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('can:usuarios');
+        $this->middleware('can:users');
     }
     /**
      * Display a listing of the resource.
@@ -52,7 +52,7 @@ class UserController extends Controller
             'password' => $request->password, // password
             'remember_token' => Str::random(10),
         ])->assignRole($request->idRol);
-        return redirect()->route('datos.user.index')->with('success', 'Usuario creado con exito!');
+        return redirect()->route('datos.users.index')->with('success', 'Usuario creado con exito!');
     }
 
     /**
@@ -93,7 +93,7 @@ class UserController extends Controller
         ]);
 
         $user->syncRoles([$role->name]);
-        return redirect()->route('datos.user.index')->with('success', 'Operacion realizada con exito!');
+        return redirect()->route('datos.users.index')->with('success', 'Operacion realizada con exito!');
     }
 
     /**

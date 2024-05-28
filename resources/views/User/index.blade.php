@@ -4,13 +4,13 @@
 @section('content')
 
     @include('components.header', [
-        'button' => ['name' => 'Agregar usuario', 'url' => 'datos.user.create'],
+        'button' => ['name' => 'Agregar usuario', 'url' => 'datos.users.create'],
     ])
 
     <div class="section">
         <div class="d-flex align-items-center justify-content-between mb-3">
             <x-tablas.number-pagination />
-            <form class="d-flex align-items-center justify-content-end p-0 gap-2" action="{{ route('datos.user.index') }}">
+            <form class="d-flex align-items-center justify-content-end p-0 gap-2" action="{{ route('datos.users.index') }}">
                 <div class="col-auto">
                     <input class="form-control" type="text" name="name" id="name" placeholder="Buscar..."
                         value="{{ $name }}">
@@ -38,7 +38,7 @@
                 <x-tablas.empty :data="$users" colspan='7' />
                 @foreach ($users as $user)
                     <tr>
-                        <td><a href={{ route('datos.user.show', $user->id) }}>{{ $user->id }}</a></td>
+                        <td><a href={{ route('datos.users.show', $user->id) }}>{{ $user->id }}</a></td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->roles[0]->name }}</td>
                         <td>{{ $user->email }}</td>
@@ -46,7 +46,7 @@
                         <td><x-tablas.fecha fecha="{{ $user->updated_at }}" /> </td>
                         </td>
                         <td>
-                            <x-tablas.delete-row id="{{ $user->id }}" route='datos.user.destroy' />
+                            <x-tablas.delete-row id="{{ $user->id }}" route='datos.users.destroy' />
                         </td>
                     </tr>
                 @endforeach
