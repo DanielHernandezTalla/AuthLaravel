@@ -6,9 +6,11 @@
 
     <div class="section-content">
         <button id="btn-habilitar-edicion" class="btn btn-success">Habilitar edición</button>
-        <form method="POST" action="{{ route('datos.user.update', $user->id) }}">
+        <form method="POST" action="{{ route('datos.users.update', $user->id) }}">
             @csrf
             @method('PUT')
+
+            <input type="hidden" name="id" value="{{ $user->id }}">
 
             <div class="row g-3 mb-3">
                 <div class="col-3">
@@ -19,6 +21,9 @@
                     <label for="name" class="form-label">Nombre completo</label>
                     <input type="text" class="form-control" id="name" name="name"
                         value="{{ old('name') ?? $user->name }}" disabled data-undisabled>
+                    @foreach ($errors->get('name') as $error)
+                        <div class="form-text text-danger">{{ $error }}</div>
+                    @endforeach
                 </div>
             </div>
             <div class="mb-3">
@@ -41,9 +46,30 @@
                 <label for="email" class="form-label">Correo</label>
                 <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}"
                     disabled data-undisabled>
-                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                @foreach ($errors->get('email') as $error)
+                    <div class="form-text text-danger">{{ $error }}</div>
+                @endforeach
             </div>
             <div class="row g-3 mb-3">
+                <div class="col">
+                    <label for="created" class="form-label">Contraseña</label>
+                    <input type="password" id="created" class="form-control" placeholder="Escribre tu contraseña"
+                        aria-label="Escribre tu contraseña" value="" name="password"disabled data-undisabled>
+                    @foreach ($errors->get('password') as $error)
+                        <div class="form-text text-danger">{{ $error }}</div>
+                    @endforeach
+                </div>
+                <div class="col">
+                    <label for="updated" class="form-label">Confirmar contraseña</label>
+                    <input type="password" id="updated" class="form-control"
+                        placeholder="Escribe la confirmación de contraseña" name="password_confirmation" value=""
+                        disabled data-undisabled>
+                    @foreach ($errors->get('password_confirmation') as $error)
+                        <div class="form-text text-danger">{{ $error }}</div>
+                    @endforeach
+                </div>
+            </div>
+            {{-- <div class="row g-3 mb-3">
                 <div class="col">
                     <label for="created" class="form-label">Creado en</label>
                     <input type="text" id="created" class="form-control" placeholder="First name"
@@ -57,7 +83,7 @@
                         value="{{ ucfirst(\Carbon\Carbon::parse($user->updated_at)->locale('es')->isoFormat('dddd D \d\e MMMM \d\e\l Y')) }}"
                         disabled>
                 </div>
-            </div>
+            </div> --}}
             <div class="row g-3">
                 <div class="col">
                     <button class="btn btn-form-cancel">Cancelar</button>

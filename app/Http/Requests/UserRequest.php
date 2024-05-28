@@ -3,12 +3,16 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
+
+
     public function authorize(): bool
     {
         return true;
@@ -19,12 +23,20 @@ class UserRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+
     public function rules(): array
     {
         return [
             'name' => ['required'],
             'idRol' => ['required', 'min:1'],
-            'email' => ['required', 'email']
+            'email' => ['required', 'email', Rule::unique('users')->ignore($this->input('id'), 'id')],
+            'password' => ['required', 'max:50', Password::min(8)
+                ->mixedCase()
+                ->letters()
+                ->numbers()
+                ->symbols()
+                ->uncompromised(),],
+            'password_confirmation' => ['required', 'min:5', 'max:50', 'same:password']
         ];
     }
 

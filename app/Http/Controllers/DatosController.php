@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class DatosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:auth');
+    }
     /**
      * Display a listing of the resource.
      */

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
     <div class="unautorize-content ">
@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div>
-                <img class="img-403" src="https://merakiui.com/images/components/illustration.svg" alt="404">
+                <img class="img-403" src="/images/404.svg" alt="404">
             </div>
         </div>
     </div>

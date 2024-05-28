@@ -27,13 +27,20 @@ Route::get('/manager', [App\Http\Controllers\HomeController::class, 'manager'])-
 Route::get('/developer', [App\Http\Controllers\HomeController::class, 'developer'])->name('developer');
 
 
-Route::prefix('datos')->name('datos.')->group(function () {
+Route::prefix('auth')->name('datos.')->group(function () {
     Route::resource('/', App\Http\Controllers\DatosController::class);
-    Route::resource('user', App\Http\Controllers\UserController::class);
+    Route::resource('users', App\Http\Controllers\UserController::class);
     Route::resource('roles', App\Http\Controllers\RolesController::class);
-    Route::resource('permisos', App\Http\Controllers\PermisosController::class);
+    Route::resource('permissions', App\Http\Controllers\PermisosController::class);
+    Route::resource('typepermissions', App\Http\Controllers\TypePermisosController::class);
+    Route::delete('roles/permisos/{id}', [App\Http\Controllers\RolesController::class, 'destroyPermissions'])->name('destroyPermissions');
+});
+
+Route::prefix('/home')->name('poswebnew.')->group(function () {
+    Route::get('/concentradociudad', [App\Http\Controllers\Poswebnew\ReportesPoswebController::class, 'concentradociudad'])->name('concentradociudad');
+    Route::get('/ventasempleados', [App\Http\Controllers\Poswebnew\ReportesPoswebController::class, 'ventasaempleados'])->name('ventasaempleados');
 });
 
 Route::fallback(function () {
-    return view('error.404');
+    return view('errors.404');
 });

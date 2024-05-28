@@ -10,7 +10,7 @@
         <div class="row g-3">
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="datos-item">
-                    <a href="{{ route('datos.user.index') }}">
+                    <a href="{{ route('datos.users.index') }}">
                         <i class="bi bi-people-fill"></i>
                         <h6>Usuarios</h6>
                     </a>
@@ -26,7 +26,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="datos-item">
-                    <a href="{{ route('datos.permisos.index') }}">
+                    <a href="{{ route('datos.permissions.index') }}">
                         <i class="bi bi-person-fill-slash"></i>
                         <h6>Permisos</h6>
                     </a>
@@ -34,17 +34,9 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="datos-item">
-                    <a href="/datos/user">
-                        <i class="bi bi-list-check"></i>
-                        <h6>Roles y permisos</h6>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="datos-item">
-                    <a href="/datos/user">
-                        <i class="bi bi-person-lines-fill"></i>
-                        <h6>Usuarios y roles</h6>
+                    <a href="{{ route('datos.typepermissions.index') }}">
+                        <i class="bi bi-list-ul"></i>
+                        <h6>Categoría Permisos</h6>
                     </a>
                 </div>
             </div>

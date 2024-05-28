@@ -28,6 +28,8 @@
 <body>
     <div id="app" class="bg-slate-100 d-flex justify-content-start" style="height: 100vh">
 
+        <x-dashboard.alerts />
+
         <nav class="nav d-flex flex-column justify-content-between"
             style="min-width:70px; background-color: var(--teal-900)">
             <div class="d-flex flex-column justify-content-between h-100  pt-5 pb-5">
@@ -36,21 +38,24 @@
                     <li>
                         <a href="/home" title="Dashboard" data-nav><i class="bi bi-speedometer"></i></a>
                     </li>
-                    <li>
-                        <a href="/user" title="Usuarios" data-nav><i class="bi bi-person-fill"></i></a>
-                    </li>
-                    <li>
-                        <a href="#" title="Graficas" data-nav><i class="bi bi-bar-chart-fill"></i></a>
-                    </li>
-                    <li>
-                        <a href="/datos" title="Datos" data-nav><i class="bi bi-database-fill"></i></a>
-                    </li>
-                    <li>
-                        <a href="#" title="Información" data-nav><i class="bi bi-question-circle-fill"></i></a>
-                    </li>
-                    <li>
-                        <a href="#" title="Configuración" data-nav><i class="bi bi-gear-fill"></i></a>
-                    </li>
+                    @if (Auth::user()->roles()->first()->name === 'admin developer')
+                        {{-- <li>
+                            <a href="/user" title="Usuarios" data-nav><i class="bi bi-database-fill"></i></a>
+                        </li> --}}
+                        <li>
+                            <a href="#" title="Graficas" data-nav><i class="bi bi-bar-chart-fill"></i></a>
+                        </li>
+                        <li>
+                            <a href="/auth" title="Auth" data-nav><i class="bi bi-person-fill"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" title="Información" data-nav><i
+                                    class="bi bi-question-circle-fill"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" title="Configuración" data-nav><i class="bi bi-gear-fill"></i></a>
+                        </li>
+                    @endif
                 </ul>
                 <ul class="d-flex flex-column align-items-center p-0 m-0">
                     <li>
@@ -76,21 +81,23 @@
                     <li>
                         <a href="/home" title="Dashboard" data-nav-abs>Dashboard</a>
                     </li>
-                    <li>
-                        <a href="/user" title="Usuarios" data-nav-abs>Usuarios</a>
-                    </li>
-                    <li>
-                        <a href="#" title="Graficas" data-nav-abs>Graficas</a>
-                    </li>
-                    <li>
-                        <a href="/datos" title="Graficas" data-nav-abs>Datos</a>
-                    </li>
-                    <li>
-                        <a href="#" title="Información" data-nav-abs>Información</a>
-                    </li>
-                    <li>
-                        <a href="#" title="Configuración" data-nav-abs>Configuración</a>
-                    </li>
+                    @if (Auth::user()->roles()->first()->name === 'admin developer')
+                        {{-- <li>
+                            <a href="/user" title="Usuarios" data-nav-abs>Usuarios</a>
+                        </li> --}}
+                        <li>
+                            <a href="#" title="Graficas" data-nav-abs>Graficas</a>
+                        </li>
+                        <li>
+                            <a href="/auth" title="Usuarios" data-nav-abs>Auth</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Información" data-nav-abs>Información</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Configuración" data-nav-abs>Configuración </a>
+                        </li>
+                    @endif
                 </ul>
                 <ul class="d-flex flex-column align-items-center p-0 m-0 ">
                     <li>
