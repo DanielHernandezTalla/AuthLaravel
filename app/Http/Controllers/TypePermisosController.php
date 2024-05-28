@@ -13,7 +13,7 @@ class TypePermisosController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // $this->middleware('can:typepermisos');
+        $this->middleware('can:typepermisos');
     }
     /**
      * Display a listing of the resource.
