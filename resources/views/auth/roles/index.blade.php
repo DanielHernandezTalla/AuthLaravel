@@ -49,11 +49,6 @@
         </table>
     </div>
 
-    @if ($roles->withQueryString()->lastPage() != 1)
-        <div class="section-min">
-            {!! $roles->withQueryString()->links('pagination::bootstrap-5') !!}
-        </div>
-    @endif
-
+    <x-tablas.pagination :data="$roles" />
 
 @endsection

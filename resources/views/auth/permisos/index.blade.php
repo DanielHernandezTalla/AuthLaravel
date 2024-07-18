@@ -66,9 +66,6 @@
         </table>
     </div>
 
-    @if ($permissions->withQueryString()->lastPage() != 1)
-        <div class="section-min">
-            {!! $permissions->withQueryString()->links('pagination::bootstrap-5') !!}
-        </div>
-    @endif
+    <x-tablas.pagination :data="$permissions" />
+
 @endsection

@@ -24,7 +24,7 @@ class RolesController extends Controller
         $roles = Role::where('name', 'like', '%' . $name . '%')
             ->paginate($paginate);
 
-        return view('roles.index', compact('name', 'roles'));
+        return view('auth.roles.index', compact('name', 'roles'));
     }
 
     /**
@@ -32,7 +32,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('roles.create');
+        return view('auth.roles.create');
     }
 
     /**
@@ -79,7 +79,7 @@ class RolesController extends Controller
             ->paginate($paginate);
 
 
-        return view('roles.[id]', compact('role', 'name', 'type', 'permisos', 'rolespermisos', 'type_permissions'));
+        return view('auth.roles.[id]', compact('role', 'name', 'type', 'permisos', 'rolespermisos', 'type_permissions'));
     }
 
     /**

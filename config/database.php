@@ -91,22 +91,7 @@ return [
             'prefix_indexes' => true,
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
-        ],
-
-        // POSWEBNEW
-        'POSWEBNEW' => [
-            'driver' => 'sqlsrv',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_POSWEBNEW_HOST', 'localhost'),
-            'port' => env('DB_POSWEBNEW_PORT', '1433'),
-            'database' => env('DB_POSWEBNEW_DATABASE', 'forge'),
-            'username' => env('DB_POSWEBNEW_USERNAME', 'forge'),
-            'password' => env('DB_POSWEBNEW_PASSWORD', ''),
-            'charset' => 'utf8',
-            'prefix' => '',
-            'prefix_indexes' => true,
-        ],
-
+        ]
     ],
 
     /*

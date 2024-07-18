@@ -42,7 +42,7 @@ class PermisosController extends Controller
             ->orderby('permissions.name')
             ->paginate($paginate);
 
-        return view('permisos.index', compact('name', 'type', 'type_permissions', 'permissions'));
+        return view('auth.permisos.index', compact('name', 'type', 'type_permissions', 'permissions'));
     }
 
     /**
@@ -51,7 +51,7 @@ class PermisosController extends Controller
     public function create()
     {
         $type_permissions = type_permissions::get();
-        return view('permisos.create', compact('type_permissions'));
+        return view('auth.permisos.create', compact('type_permissions'));
     }
 
     /**
@@ -91,7 +91,7 @@ class PermisosController extends Controller
         $rolespermisos = Role::whereIn('id', $permission->roles->pluck('id'))
             ->paginate($paginate);
 
-        return view('permisos.[id]', compact('permission', 'roles', 'rolespermisos', 'type_permissions'));
+        return view('auth.permisos.[id]', compact('permission', 'roles', 'rolespermisos', 'type_permissions'));
     }
 
     /**

@@ -26,7 +26,7 @@ class TypePermisosController extends Controller
         $type_permissions = type_permissions::where('name', 'like', '%' . $name . '%')
             ->paginate($paginate);
 
-        return view('typepermisos.index', compact('name', 'type_permissions'));
+        return view('auth.typepermisos.index', compact('name', 'type_permissions'));
     }
 
     /**
@@ -34,7 +34,7 @@ class TypePermisosController extends Controller
      */
     public function create()
     {
-        return view('typepermisos.create');
+        return view('auth.typepermisos.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class TypePermisosController extends Controller
     {
         $type_permission = type_permissions::where('id', $id)->first();
 
-        return view('typepermisos.[id]', compact('type_permission'));
+        return view('auth.typepermisos.[id]', compact('type_permission'));
     }
 
     /**

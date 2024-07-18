@@ -16,7 +16,7 @@ class DatosController extends Controller
      */
     public function index()
     {
-        return view('Datos.index');
+        return view('datos.index');
     }
 
     /**

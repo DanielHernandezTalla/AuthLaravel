@@ -27,7 +27,7 @@ class UserController extends Controller
             ->where('name', 'like', '%' . $name . '%')
             ->paginate($paginate);
 
-        return view('user.index', compact('name', 'users'));
+        return view('auth.user.index', compact('name', 'users'));
     }
 
     /**
@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         $roles = Role::get();
 
-        return view('user.create', compact('roles'));
+        return view('auth.user.create', compact('roles'));
     }
 
     /**
@@ -66,7 +66,7 @@ class UserController extends Controller
             ->where('id', $id)
             ->first();
 
-        return view('user.[id]', compact('user', 'roles'));
+        return view('auth.user.[id]', compact('user', 'roles'));
     }
 
     /**
